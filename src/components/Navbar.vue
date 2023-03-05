@@ -1,9 +1,11 @@
 <template>
     <header class="nav">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/login" v-if="!isAuthenticated">Login</RouterLink>
-        <RouterLink to="/signup" v-if="!isAuthenticated">Sign up</RouterLink>
-        <RouterLink to="/products" v-else>Products</RouterLink>
+        <div class="links">
+            <RouterLink to="/login" v-if="!isAuthenticated">Login</RouterLink>
+            <RouterLink to="/signup" v-if="!isAuthenticated">Sign up</RouterLink>
+            <RouterLink to="/products" v-else>Products</RouterLink>
+        </div>
         <button @click="handleLogout" v-if="isAuthenticated">Logout</button>
     </header>
 </template>
@@ -38,5 +40,33 @@ import { computed } from '@vue/reactivity';
         align-items: center;
         padding: 1rem;
         background: white;
+    }
+    .links {
+        display: flex;
+        margin-left: auto;
+        justify-content: space-between;
+        width: 25%;
+        align-items: center;
+    }
+    button {
+    margin-top: 0.75rem;
+    border: 2px solid black;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    text-align: center;
+    cursor: pointer;
+}
+    @media screen and (max-width: 1024px) {
+        .links {
+            width: 50%;
+        }
+    }
+    @media screen and (max-width: 400px) {
+        .links {
+            width: 100%;
+        }
     }
 </style>
