@@ -87,21 +87,21 @@
     label {
         display: block;
         font-size: 0.875rem;
-    line-height: 1.25rem;
-    font-weight: 500;
-    --tw-text-opacity: 1;
-    color: rgb(17 24 39 / var(--tw-text-opacity));
+        line-height: 1.25rem;
+        font-weight: 500;
+        --tw-text-opacity: 1;
+        color: rgb(17 24 39 / var(--tw-text-opacity));
 
     }
     input {
         --tw-bg-opacity: 1;
-    background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-    border: 2px solid black;
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    width: 100%;
-    border-radius: 0.375rem;
-    padding: 0.75rem;
+        background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+        border: 2px solid black;
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        width: 100%;
+        border-radius: 0.375rem;
+        padding: 0.75rem;
     }
     a {
         color: blue;
@@ -120,11 +120,11 @@ button {
     text-align: center;
     cursor: pointer;
     outline: none;
-  left: -4px;
-  top: -4px;
-  z-index: 2;
-  box-shadow: 1px 3px black ;
-  transition:0.1s ease-in-out ;
+    left: -4px;
+    top: -4px;
+    z-index: 2;
+    box-shadow: 1px 3px black ;
+    transition:0.1s ease-in-out ;
 
 }
 
@@ -141,6 +141,10 @@ button:disabled {
     @media screen and (max-width: 400px) {
         form {
             width: 90%;
+            height: auto;
+        }
+        .form {
+            justify-content: flex-start;
         }
     }
 </style>

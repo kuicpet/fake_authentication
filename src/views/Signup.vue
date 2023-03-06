@@ -147,6 +147,10 @@ button:disabled {
     @media screen and (max-width: 400px) {
         form {
             width: 90%;
+            height: auto;
+        }
+        .form {
+            justify-content: flex-start;
         }
     }
 </style>

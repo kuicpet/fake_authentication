@@ -95,7 +95,13 @@ a:hover {
     }
     @media screen and (max-width: 400px) {
         .links {
-            width: 100%;
+            width: 50%;
         }
+         a {
+            left: 0;
+            top: 0;
+            z-index: 2;
+             box-shadow: none;
+         }
     }
 </style>
