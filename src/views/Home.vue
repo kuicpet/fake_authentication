@@ -78,7 +78,7 @@ a:hover {
             text-align: center;
         }
         h1 {
-            font-weight: 500;
+            font-weight: 300;
         }
         a {
             width: auto;
