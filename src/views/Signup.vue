@@ -149,6 +149,9 @@ button:disabled {
             width: 90%;
             height: auto;
         }
+        h1 {
+            font-weight: 400;
+        }
         .form {
             justify-content: flex-start;
         }
