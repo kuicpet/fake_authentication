@@ -77,6 +77,9 @@ a:hover {
             justify-content: center;
             text-align: center;
         }
+        h1 {
+            font-weight: 500;
+        }
         a {
             width: auto;
             margin: 0 auto;
