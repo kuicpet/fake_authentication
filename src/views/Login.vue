@@ -1,19 +1,22 @@
 <template>
     <div class="form">
-        <h1>Login</h1>
+        <h1>Login to your Account</h1>
         <form>
             <div>
                 <label for="username">Username</label>
-                <input type="text" placeholder="Username" v-model="userName">
+                <input type="text" placeholder="Username" v-model="userName" required>
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="text" placeholder="Password" v-model="password">
+                <input type="text" placeholder="Password" v-model="password" required>
             </div>
             <div>
-                <button @click="handleLogin">Login</button>
+                <button @click="handleLogin" :disabled="!userName || !password">Login</button>
             </div>
         </form>
+        <div>
+            <p>Don't have an account? <RouterLink to="/signup">Sign up</RouterLink> </p>
+        </div>
     </div>
 </template>
 
@@ -53,7 +56,7 @@
     }
 </script>
 
-<style>
+<style scoped>
     .form {
         display: flex;
         flex-direction: column;
@@ -61,6 +64,9 @@
         justify-content: center;
         height: 75vh;
         margin: 1rem;
+    }
+    h1 {
+        font-weight: 200;
     }
     form {
         border: 2px solid black;
@@ -97,21 +103,44 @@
     border-radius: 0.375rem;
     padding: 0.75rem;
     }
+    a {
+        color: blue;
+        border: none;
+        text-decoration: underline;
+    }
 button {
     margin-top: 0.75rem;
     border: 2px solid black;
     border-radius: 0.375rem;
-    font-size: 0.875rem;
-    background-color: black;
-    color: white;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
     width: 100%;
     padding: 0.5rem 1.25rem;
     text-align: center;
     cursor: pointer;
+    outline: none;
+  left: -4px;
+  top: -4px;
+  z-index: 2;
+  box-shadow: 1px 3px black ;
+  transition:0.1s ease-in-out ;
+
 }
-    @media screen and (max-width: 1024px) {
+
+button:disabled {
+    background-color: lightgray;
+    color: black;
+    cursor: not-allowed;
+}
+  @media screen and (max-width: 768px) {
         form {
             width: 50%;
+        }
+    }
+    @media screen and (max-width: 400px) {
+        form {
+            width: 90%;
         }
     }
 </style>
