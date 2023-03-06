@@ -77,6 +77,9 @@ a:hover {
             justify-content: center;
             text-align: center;
         }
+        .hero {
+            margin: 2rem;
+        }
         h1 {
             font-weight: 300;
         }
