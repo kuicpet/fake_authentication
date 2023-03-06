@@ -95,7 +95,7 @@ a:hover {
     }
     @media screen and (max-width: 400px) {
         .links {
-            width: 50%;
+            width: 60%;
         }
          a {
             left: 0;
