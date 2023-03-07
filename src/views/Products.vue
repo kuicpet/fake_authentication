@@ -12,7 +12,7 @@
             @click="$event => $router.push(`/products/${product.id}`)"
             >
             <h2>{{ product.title }}</h2>
-            <img :src="product.images[2] || product.images[0]" alt="">
+            <img :src="product.thumbnail || product.images[0]" alt="">
             <button @click="$event => $router.push(`/products/${product.id}`)">Product Details</button>
         </div>
     </div>
