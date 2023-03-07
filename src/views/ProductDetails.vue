@@ -148,7 +148,23 @@ a:hover {
     color: white;
     background-color: black;
     /*transform: translateY(2px) ;*/
-    box-shadow:0 0 0 ;
-    
+    box-shadow:0 0 0 ;   
+}
+
+@media screen and (max-width: 800px ) {
+    .container {
+        flex-direction: column;
+    }
+    .img_container {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 400px) {
+    button {
+        width: 100%;
+    }
+    .img_container {
+        width: 100%;
+    }
 }
 </style>
