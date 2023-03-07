@@ -2,28 +2,31 @@
     <header class="nav">
         <RouterLink to="/">Home</RouterLink>
         <div class="links">
-            <RouterLink to="/login" v-if="!isAuthenticated">Login</RouterLink>
-            <RouterLink to="/signup" v-if="!isAuthenticated">Sign up</RouterLink>
-            <RouterLink to="/products" v-else>Products</RouterLink>
+            <button v-if="isAuthenticated" @click="handleLogout" >Logout</button>
+            <RouterLink v-if="!isAuthenticated" to="/login" >Login</RouterLink>
+            <RouterLink v-if="!isAuthenticated" to="/signup" >Sign up</RouterLink>
         </div>
-        <button @click="handleLogout" v-if="isAuthenticated">Logout</button>
     </header>
 </template>
 
 <script>
 import { computed } from '@vue/reactivity';
     import { useRouter } from 'vue-router';
+    import store from '../store';
 
     export default {
         setup(){
             const router = useRouter()
 
             const handleLogout = () => {
-                localStorage.removeItem('token')
-                router.push('/login')
+                store.dispatch('logout').then(() => {
+                    router.push('/login')
+                })
             }
 
-            const isAuthenticated = computed(() => !!localStorage.getItem('token'))
+            const isAuthenticated = computed(() => {
+                return store.state.loggedIn
+            })
 
             return {
                 isAuthenticated,
@@ -87,6 +90,7 @@ a:hover {
     padding: 0.5rem 1.25rem;
     text-align: center;
     cursor: pointer;
+    margin-left: auto;
 }
     @media screen and (max-width: 1024px) {
         .links {

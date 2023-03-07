@@ -1,7 +1,7 @@
 <template>
     <div class="form">
         <h1>Login to your Account</h1>
-        <form>
+        <form >
             <div>
                 <label for="username">Username</label>
                 <input type="text" placeholder="Username" v-model="userName" required>
@@ -23,6 +23,7 @@
 <script>
     import {ref} from '@vue/reactivity'
     import { useRouter } from 'vue-router';
+    import store from '../store'
 
     export default {
         setup(){
@@ -31,21 +32,14 @@
 
             const router = useRouter()
 
-            const dummyData = {
-                userName: 'kuic',
-                password: 'password',
-            }
+            
 
-            const handleLogin = () => {
-                if(
-                    userName.value === dummyData.userName && password.value === dummyData.password
-                ){
-                    localStorage.setItem('token', 'morenike')
-                    alert('Login successful!!!')
-                    router.push({name: 'Products'})
-                } else {
-                    alert("Username or Password is incorrect!!!");
-                }
+            const handleLogin = (e) => {
+                e.preventDefault()
+                console.log(userName.value, password.value)
+                store.dispatch('login', {userName: userName.value, password: password.value}).then(() => {
+                    router.push('/products')
+                }).catch((error) => console.log(error))
             }
             return {
                 userName, 

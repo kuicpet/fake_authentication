@@ -12,6 +12,14 @@ const store = createStore({
       state.loggedIn = false
     },
   },
+  actions: {
+    login({commit}){
+      commit('login')
+    },
+    logout({commit}){
+      commit('logout')
+    }
+  }
 })
 
 export default store
