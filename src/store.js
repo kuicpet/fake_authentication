@@ -3,18 +3,21 @@ import { createStore } from 'vuex'
 const store = createStore({
   state: {
     loggedIn: false,
+    user: null,
   },
   mutations: {
-    login(state) {
+    login(state, user) {
       state.loggedIn = true
+      state.user = user
     },
     logout(state) {
       state.loggedIn = false
+      state.user = null
     },
   },
   actions: {
-    login({commit}){
-      commit('login')
+    login({commit}, user){
+      commit('login', user)
     },
     logout({commit}){
       commit('logout')

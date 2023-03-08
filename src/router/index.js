@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import authGuard from '../authGuard'
 import store from '../store'
 
 // views
@@ -18,7 +17,6 @@ const routes = [
     path: '/products',
     component: () => import('@/views/Products.vue'),
     meta: {
-      //authIsRequired: true,
       requiresAuth: true,
     },
   },
@@ -27,7 +25,6 @@ const routes = [
     path: '/products/:productId',
     component: () => import('@/views/ProductDetails.vue'),
     meta: {
-      //authIsRequired: true,
       requiresAuth: true,
     },
   },
@@ -36,7 +33,6 @@ const routes = [
     path: '/signup',
     component: () => import('@/views/Signup.vue'),
     meta: {
-      // authIsRequired: true,
       requiresGuest: true,
     },
   },
@@ -45,7 +41,6 @@ const routes = [
     path: '/login',
     component: () => import('@/views/Login.vue'),
     meta: {
-      // authIsRequired: true,
       requiresGuest: true,
     },
   },

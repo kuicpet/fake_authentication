@@ -18,7 +18,7 @@
             </div>
             <p>Rating : {{ product.rating }}</p>
             <p>Brand : {{ product.brand }}</p>
-            <p>Product description: {{ product.description }}</p>
+            <p><span>Product description</span> <br />{{ product.description }}</p>
             <button>Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
         </div>
     </div>
@@ -28,7 +28,6 @@
     import {ref} from '@vue/reactivity'
     import { useRoute } from 'vue-router';
     import { onMounted } from 'vue';
-    import { computed } from '@vue/reactivity';
     import Loader from '../components/Loader.vue';
 
     export default {
@@ -36,6 +35,7 @@
         setup(){
             const product = ref({})
             const route = useRoute()
+            const loading = ref(true)
 
             const fetchProductDetails = () => {
                 const {productId} = route.params
@@ -44,7 +44,8 @@
                 fetch(endpoint)
                     .then((response) => response.json())
                     .then((json) => (product.value = json))
-            }
+                    .finally(() => (loading.value = false))
+            }       
             onMounted(() => {
                 fetchProductDetails()
             })
@@ -162,7 +163,10 @@ a:hover {
     /*transform: translateY(2px) ;*/
     box-shadow:0 0 0 ;   
 }
-
+span {
+    font-weight: bold;
+    color: black;
+}
 @media screen and (max-width: 800px ) {
     .container {
         flex-direction: column;
