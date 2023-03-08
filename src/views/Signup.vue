@@ -15,7 +15,7 @@
                 <input type="text" placeholder="Password" v-model="password" required>
             </div>
             <div>
-                <button @click="handleSignup" :disabled="!userName || !password || !email" >Sign up</button>
+                <button @click="handleSignup" :disabled="!userName || !password || !email" >{{ !loading ? 'Signingup...' : 'Signup' }}</button>
             </div>
         </form>
         <div>
@@ -34,6 +34,7 @@
             const userName = ref('')
             const password = ref('')
             const email = ref('')
+            const loading = ref(true)
 
             const router = useRouter()
 
@@ -42,15 +43,20 @@
             const handleSignup = (e) => {
                 e.preventDefault()
                 // console.log(userName.value, password.value, email.value)
-                store.dispatch('login', {userName: userName.value, password: password.value}).then(() => {
-                    router.push('/login')
-                }).catch((error) => console.log(error))
+                store.dispatch('signup')
+                    .then(() => {
+                        setTimeout(() => {
+                            router.push('/login')
+                        }, 1000);
+                    }).catch((error) => console.log(error))
+                    .finally(() => (loading.value = false))
             }
             return {
                 userName, 
                 password, 
                 email,
                 handleSignup,
+                loading
             }
         }
     }

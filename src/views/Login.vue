@@ -11,7 +11,7 @@
                 <input type="text" placeholder="Password" v-model="password" required>
             </div>
             <div>
-                <button @click="handleLogin" :disabled="!userName || !password">Login</button>
+                <button @click="handleLogin" :disabled="!userName || !password">{{ !loading ? 'Logging in...' : 'Login' }}</button>
             </div>
         </form>
         <div>
@@ -29,22 +29,31 @@
         setup(){
             const userName = ref('')
             const password = ref('')
+            const loading = ref(true)
 
             const router = useRouter()
 
-            
+            const user = {
+                userName: userName,
+                password: password
+            }
 
             const handleLogin = (e) => {
                 e.preventDefault()
                 //console.log(userName.value, password.value)
-                store.dispatch('login', {userName: userName.value, password: password.value}).then(() => {
-                    router.push('/products')
+                store.dispatch('login')
+                .then(() => {
+                    setTimeout(() => {
+                        router.push('/products')
+                    }, 1000);
                 }).catch((error) => console.log(error))
+                .finally(() => (loading.value = false))
             }
             return {
                 userName, 
                 password, 
                 handleLogin,
+                loading
             }
         }
     }
