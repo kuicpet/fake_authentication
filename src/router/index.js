@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import authGuard from '../authGuard'
+import store from '../store'
 
 // views
 import Home from '../views/Home.vue'
@@ -18,9 +19,8 @@ const routes = [
     component: () => import('@/views/Products.vue'),
     meta: {
       //authIsRequired: true,
-      requireAuth: true
+      requiresAuth: true,
     },
-    beforeEnter: authGuard
   },
   {
     name: 'Product',
@@ -28,9 +28,8 @@ const routes = [
     component: () => import('@/views/ProductDetails.vue'),
     meta: {
       //authIsRequired: true,
-      requireAuth: true
+      requiresAuth: true,
     },
-    beforeEnter: authGuard
   },
   {
     name: 'Signup',
@@ -38,7 +37,7 @@ const routes = [
     component: () => import('@/views/Signup.vue'),
     meta: {
       // authIsRequired: true,
-      requireGuest: true
+      requiresGuest: true,
     },
   },
   {
@@ -47,38 +46,38 @@ const routes = [
     component: () => import('@/views/Login.vue'),
     meta: {
       // authIsRequired: true,
-      requireGuest: true
+      requiresGuest: true,
     },
   },
   {
+    name: 'NotFound',
     path: '/:pathMatch(.*)*',
-    component: NotFound
-  }
+    component: NotFound,
+  },
 ]
 
 // router
 const router = createRouter({ history: createWebHistory(), routes })
 
-/* const isAuthenticated = () => !!localStorage.getItem('token')
-
-const canUserAccess = (to) => {
-  if (!isAuthenticated() && to.meta.authIsRequired && to.name !== 'Login') {
-    return false
-  }
-  return true
-}
-
-router.beforeEach((to, from) => {
-  const canAccess = canUserAccess(to)
-  if (isAuthenticated() && to.name === 'Login') {
-    return {
-      name: 'Home',
+router.beforeEach((to, from, next) => {
+  if(to.matched.some((record) => record.meta.requiresAuth)){
+    if(!store.state.loggedIn){
+      next({
+        name: 'Login',
+      })
+    } else {
+      next()
     }
-  }
-  if (!canAccess) {
-    return {
-      name: 'Login',
+  } else if(to.matched.some((record) => record.meta.requiresGuest)){
+    if(store.state.loggedIn){
+      next({
+        name: 'Products',
+      })
+    } else {
+      next()
     }
+  } else {
+    next()
   }
-})*/
+})
 export default router

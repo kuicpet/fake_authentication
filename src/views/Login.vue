@@ -36,7 +36,7 @@
 
             const handleLogin = (e) => {
                 e.preventDefault()
-                console.log(userName.value, password.value)
+                //console.log(userName.value, password.value)
                 store.dispatch('login', {userName: userName.value, password: password.value}).then(() => {
                     router.push('/products')
                 }).catch((error) => console.log(error))

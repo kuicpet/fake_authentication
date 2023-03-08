@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity';
+    import { computed } from '@vue/reactivity';
     import { useRouter } from 'vue-router';
     import store from '../store';
 
@@ -51,34 +51,36 @@ import { computed } from '@vue/reactivity';
         width: 25%;
         align-items: center;
     }
+    .cart {  
+        padding: 0.5rem;
+    }
     a {
-  text-decoration: none;
-  border: 2px solid gray;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  color: gray;
-  border-radius: 0.375rem;
-  outline: none;
-  left: -4px;
-  top: -4px;
-  z-index: 2;
-  box-shadow: 1px 3px gray ;
-  transition:0.1s ease-in-out ;
-}
-a:hover {
-    color: white;
-    background-color: black;
-    /*transform: translateY(2px) ;*/
-    box-shadow:0 0 0 ;
-    
-}
+        text-decoration: none;
+        border: 2px solid gray;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        color: gray;
+        border-radius: 0.375rem;
+        outline: none;
+        left: -4px;
+        top: -4px;
+        z-index: 2;
+        box-shadow: 1px 3px gray ;
+        transition:0.1s ease-in-out ;
+    }
+    a:hover {
+        color: white;
+        background-color: black;
+        /*transform: translateY(2px) ;*/
+        box-shadow:0 0 0 ;
+    }
 
-.router-link-active {
-    color: white;
-    background-color: black;
-    /*transform: translateY(2px) ;*/
-    box-shadow:0 0 0 ;
-}
+    .router-link-active {
+        color: white;
+        background-color: black;
+        transform: translateY(-2px) ;
+        box-shadow:0 0 0 ;
+    }
 
     button {
     margin-top: 0.75rem;

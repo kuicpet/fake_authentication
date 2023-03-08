@@ -28,6 +28,7 @@
     import {ref} from '@vue/reactivity'
     import { useRoute } from 'vue-router';
     import { onMounted } from 'vue';
+    import { computed } from '@vue/reactivity';
     import Loader from '../components/Loader.vue';
 
     export default {
@@ -47,9 +48,9 @@
             onMounted(() => {
                 fetchProductDetails()
             })
-
+            
             return {
-                product
+                product,
             }
         }
     }
@@ -129,6 +130,17 @@ button:hover {
     color: white;
     transform: translateY(2px) ;
     box-shadow:0 0 0 ;
+}
+.loader {
+    position: absolute;
+    display: flex;
+    z-index: 0;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    justify-content: center;
+    align-items: center;
 }
 a {
   text-decoration: none;
