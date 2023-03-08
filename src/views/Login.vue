@@ -107,8 +107,8 @@ button {
     border: 2px solid black;
     border-radius: 0.375rem;
     font-size: 1rem;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     width: 100%;
     padding: 0.5rem 1.25rem;
     text-align: center;

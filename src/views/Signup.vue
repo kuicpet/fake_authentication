@@ -27,6 +27,7 @@
 <script>
     import {ref} from '@vue/reactivity'
     import { useRouter } from 'vue-router';
+    import store from '../store';
 
     export default {
         setup(){
@@ -36,27 +37,19 @@
 
             const router = useRouter()
 
-            const dummyData = {
-                userName: 'kuic',
-                password: 'password',
-                email: ''
-            }
 
-            const handleSignup = () => {
-                if(
-                    userName.value === dummyData.userName && password.value === dummyData.password && email.value === dummyData.email
-                ){
-                    localStorage.setItem('token', 'morenike')
-                    alert('Signup successful!!!')
-                    router.push({name: 'Login'})
-                } else {
-                    alert("Email or Username or Password is incorrect!!!");
-                    return
-                }
+
+            const handleSignup = (e) => {
+                e.preventDefault()
+                // console.log(userName.value, password.value, email.value)
+                store.dispatch('login', {userName: userName.value, password: password.value}).then(() => {
+                    router.push('/login')
+                }).catch((error) => console.log(error))
             }
             return {
                 userName, 
                 password, 
+                email,
                 handleSignup,
             }
         }
