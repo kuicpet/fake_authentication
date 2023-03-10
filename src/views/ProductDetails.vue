@@ -103,6 +103,7 @@
     }
     .discounted {
         color: black;
+        font-weight: bold;
     }
     .normal {
         text-decoration: line-through;
