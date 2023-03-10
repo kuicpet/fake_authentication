@@ -2,7 +2,7 @@
     <header class="nav">
         <RouterLink to="/">Home</RouterLink>
         <div class="links">
-            <button v-if="isAuthenticated" @click="handleLogout" >Logout</button>
+            <button class="logout" v-if="isAuthenticated" @click="handleLogout" >Logout</button>
             <RouterLink v-if="!isAuthenticated" to="/login" >Login</RouterLink>
             <RouterLink v-if="!isAuthenticated" to="/signup" >Sign up</RouterLink>
         </div>
@@ -92,8 +92,13 @@
     padding: 0.5rem 1.25rem;
     text-align: center;
     cursor: pointer;
+    outline: none;
     margin-left: auto;
 }
+    .logout:hover {
+        background-color: red;
+        border: 2px solid red;
+    }
     @media screen and (max-width: 1024px) {
         .links {
             width: 50%;

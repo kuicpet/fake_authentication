@@ -1,3 +1,4 @@
+//import axios from 'axios'
 import { createStore } from 'vuex'
 
 const store = createStore({
@@ -5,6 +6,7 @@ const store = createStore({
     loggedIn: false,
     signedUp: false,
     user: null,
+    //products: []
   },
   mutations: {
     login(state, user) {
@@ -17,7 +19,10 @@ const store = createStore({
     },
     signup(state){
       state.signedUp = true
-    }
+    },
+    /*setProducts(state, products){
+      state.products = products
+    }*/
   },
   actions: {
     login({commit}){
@@ -28,8 +33,20 @@ const store = createStore({
     },
     signup({commit}){
       commit('signup')
+    },
+    /*async fetchProducts({commit}){
+      const endpoint = 'https://dummyjson.com/products'
+      const response = await axios.get(endpoint)
+      const products = response.data
+      console.log(products)
+      commit('setProducts', products)
+    }*/
+  },
+  /*getters: {
+    getProducts(state){
+      return state.products
     }
-  }
+  }*/
 })
 
 export default store
