@@ -1,27 +1,29 @@
 <template>
-    <div v-if="loading" class="loader">
+        <div v-if="loading" class="loader">
             <Loader />
         </div>
-    <div v-else class="category">
-       <RouterLink to="/products">Go Back</RouterLink>
-        <p >Category - {{ product.category }}</p>
-    </div>
-    <div class="container">
-        <div class="img_container">
-            <img  :src="product.thumbnail" alt="" >
-        </div>
-        <div class="details">
-            <h1>{{ product.title }}</h1>
-            <div class="price">
-                <h2 class="normal">${{ product.price }}</h2>
-                <h2 class="discounted">${{ product.price - product.price * product.discountPercentage / 100 }}</h2>
+        <div v-else>
+            <div class="category">
+               <RouterLink to="/products">Go Back</RouterLink>
+                <p >Category - {{ product.category }}</p>
             </div>
-            <p>Rating : {{ product.rating }}</p>
-            <p>Brand : {{ product.brand }}</p>
-            <p><span>Product description</span> <br />{{ product.description }}</p>
-            <button>Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
+            <div class="container">
+                <div class="img_container">
+                    <img  :src="product.thumbnail" alt="" >
+                </div>
+                <div class="details">
+                    <h1>{{ product.title }}</h1>
+                    <div class="price">
+                        <h2 class="normal">${{ product.price }}</h2>
+                        <h2 class="discounted">${{ product.price - product.price * product.discountPercentage / 100 }}</h2>
+                    </div>
+                    <p>Rating : {{ product.rating }}</p>
+                    <p>Brand : {{ product.brand }}</p>
+                    <p><span>Product description</span> <br />{{ product.description }}</p>
+                    <button>Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
+                </div>
+            </div>
         </div>
-    </div>
 </template>
 
 <script>

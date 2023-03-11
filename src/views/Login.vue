@@ -38,14 +38,16 @@
                 password: password
             }
 
+            const token = 'morenike'
             const handleLogin = (e) => {
                 e.preventDefault()
+                
                 //console.log(userName.value, password.value)
                 store.dispatch('login')
                 .then(() => {
-                    setTimeout(() => {
-                        router.push('/products')
-                    }, 1000);
+                    localStorage.setItem('token', token)
+                    router.push('/products')
+                    
                 }).catch((error) => console.log(error))
                 .finally(() => (loading.value = false))
             }

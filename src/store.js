@@ -3,19 +3,19 @@ import { createStore } from 'vuex'
 
 const store = createStore({
   state: {
-    loggedIn: false,
+    loggedIn: !!localStorage.getItem('token'),
     signedUp: false,
-    user: null,
+    //user: null,
     //products: []
   },
   mutations: {
-    login(state, user) {
-      state.loggedIn = true
-      state.user = user
+    login(state, loggedIn) {
+      state.loggedIn = loggedIn
+      //state.user = user
     },
     logout(state) {
       state.loggedIn = false
-      state.user = null
+      //state.user = null
     },
     signup(state){
       state.signedUp = true
@@ -29,6 +29,7 @@ const store = createStore({
       commit('login')
     },
     logout({commit}){
+      localStorage.removeItem('token')
       commit('logout')
     },
     signup({commit}){

@@ -20,6 +20,7 @@
 
             const handleLogout = () => {
                 store.dispatch('logout').then(() => {
+                    
                     router.push('/login')
                 })
             }
