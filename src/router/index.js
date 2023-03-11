@@ -4,7 +4,7 @@ import store from '../store'
 // views
 import Home from '../views/Home.vue'
 import NotFound from '../views/NotFound.vue'
-import Products from '../views/Products.vue'
+
 
 // routes
 const routes = [
@@ -45,7 +45,14 @@ const routes = [
       requiresAuth: true,
     },
   },
- 
+ {
+  name: 'Cart',
+  path: '/cart',
+  component: () => import('@/views/Cart.vue'),
+  meta: {
+    requiresAuth: true,
+  }
+ },
   {
     name: 'NotFound',
     path: '/:pathMatch(.*)*',

@@ -18,7 +18,6 @@
                         <h2 class="discounted">${{ product.price - product.price * product.discountPercentage / 100 }}</h2>
                     </div>
                     <Rating :rating="product.rating" />
-                    <p>Rating : {{ product.rating }}</p>
                     <p>Brand : {{ product.brand }}</p>
                     <p><span>Product description</span> <br />{{ product.description }}</p>
                     <button>Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
@@ -120,7 +119,7 @@
     font-size: 1rem;
     background-color: orange;
     color: black;
-    width: 50%;
+    width: 80%;
     padding: 0.5rem 1.25rem;
     text-align: center;
     cursor: pointer;

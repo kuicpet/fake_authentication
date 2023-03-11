@@ -8,10 +8,7 @@
 </template>
 
 <script>
-    //import {StarIcon} from 'vue-feather-icons'
-    // import StarIcon from '../assets/star.svg'
     export default {
-        //components: {StarIcon},
         props: {
             rating: {
                 type: Number,

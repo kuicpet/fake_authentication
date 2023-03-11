@@ -2,6 +2,7 @@
     <header class="nav">
         <RouterLink to="/">Home</RouterLink>
         <div class="links">
+            <button class="logout" v-if="isAuthenticated" @click="viewCart" >Cart</button>
             <button class="logout" v-if="isAuthenticated" @click="handleLogout" >Logout</button>
             <RouterLink v-if="!isAuthenticated" to="/login" >Login</RouterLink>
             <RouterLink v-if="!isAuthenticated" to="/signup" >Sign up</RouterLink>
@@ -18,6 +19,9 @@
         setup(){
             const router = useRouter()
 
+            const viewCart = () => {
+                router.push('/cart')
+            }
             const handleLogout = () => {
                 store.dispatch('logout').then(() => {
                     router.push('/login')
@@ -30,7 +34,8 @@
 
             return {
                 isAuthenticated,
-                handleLogout
+                handleLogout,
+                viewCart
             }
         }
     }
