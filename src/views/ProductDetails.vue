@@ -17,6 +17,7 @@
                         <h2 class="normal">${{ product.price }}</h2>
                         <h2 class="discounted">${{ product.price - product.price * product.discountPercentage / 100 }}</h2>
                     </div>
+                    <Rating :rating="product.rating" />
                     <p>Rating : {{ product.rating }}</p>
                     <p>Brand : {{ product.brand }}</p>
                     <p><span>Product description</span> <br />{{ product.description }}</p>
@@ -31,9 +32,10 @@
     import { useRoute } from 'vue-router';
     import { onMounted } from 'vue';
     import Loader from '../components/Loader.vue';
+    import Rating from '../components/Rating.vue';
 
     export default {
-        components: {Loader},
+        components: {Loader, Rating},
         setup(){
             const product = ref({})
             const route = useRoute()
