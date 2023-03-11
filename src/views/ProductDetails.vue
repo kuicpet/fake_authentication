@@ -54,6 +54,7 @@
             
             return {
                 product,
+                loading
             }
         }
     }
@@ -138,7 +139,7 @@ button:hover {
 .loader {
     position: absolute;
     display: flex;
-    z-index: 0;
+    z-index: 10;
     top: 0px;
     right: 0px;
     bottom: 0px;

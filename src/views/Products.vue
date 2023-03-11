@@ -12,7 +12,7 @@
             @click="$event => $router.push(`/products/${product.id}`)"
             >
             <h2>{{ product.title }}</h2>
-            <img :src="product.thumbnail || product.images[0]" alt="">
+            <img :src="product.images[2] || product.images[0]" alt="">
             <button @click="$event => $router.push(`/products/${product.id}`)">Product Details</button>
         </div>
     </div>
@@ -80,7 +80,7 @@ img {
 .loader {
     position: absolute;
     display: flex;
-    z-index: 0;
+    z-index: 10;
     top: 0px;
     right: 0px;
     bottom: 0px;

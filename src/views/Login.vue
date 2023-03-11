@@ -11,7 +11,10 @@
                 <input type="text" placeholder="Password" v-model="password" required>
             </div>
             <div>
-                <button @click="handleLogin" :disabled="!userName || !password">{{ !loading ? 'Logging in...' : 'Login' }}</button>
+                <button @click="handleLogin" :disabled="!userName || !password">
+                    <span v-if="!loading">Logging in...</span>
+                    <span v-else>Login</span>
+                </button>
             </div>
         </form>
         <div>
@@ -43,10 +46,13 @@
                 e.preventDefault()
                 
                 //console.log(userName.value, password.value)
-                store.dispatch('login')
+                store.dispatch('login', user)
                 .then(() => {
                     localStorage.setItem('token', token)
-                    router.push('/products')
+                    setTimeout(() => {
+                        
+                        router.push('/products')
+                    }, 1000);
                     
                 }).catch((error) => console.log(error))
                 .finally(() => (loading.value = false))

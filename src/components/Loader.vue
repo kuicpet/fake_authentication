@@ -9,7 +9,7 @@
         border-radius: 50%;
         border: 3px solid #fff;
         border-top: 3px solid black;
-        animation: spin 0.8s linear infinite;
+        animation: spin 0.4s linear infinite;
 
       }
       @keyframes spin {

@@ -4,6 +4,7 @@ import store from '../store'
 // views
 import Home from '../views/Home.vue'
 import NotFound from '../views/NotFound.vue'
+import Products from '../views/Products.vue'
 
 // routes
 const routes = [
@@ -11,22 +12,6 @@ const routes = [
     name: 'Home',
     path: '/',
     component: Home,
-  },
-  {
-    name: 'Products',
-    path: '/products',
-    component: () => import('@/views/Products.vue'),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    name: 'Product',
-    path: '/products/:productId',
-    component: () => import('@/views/ProductDetails.vue'),
-    meta: {
-      requiresAuth: true,
-    },
   },
   {
     name: 'Signup',
@@ -44,6 +29,23 @@ const routes = [
       requiresGuest: true,
     },
   },
+  {
+    name: 'Products',
+    path: '/products',
+    component: () => import('@/views/Products.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    name: 'Product',
+    path: '/products/:productId',
+    component: () => import('@/views/ProductDetails.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+ 
   {
     name: 'NotFound',
     path: '/:pathMatch(.*)*',

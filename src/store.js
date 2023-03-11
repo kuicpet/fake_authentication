@@ -5,6 +5,7 @@ const store = createStore({
   state: {
     loggedIn: !!localStorage.getItem('token'),
     signedUp: false,
+    //token: 'morenike',
     //user: null,
     //products: []
   },
@@ -25,8 +26,8 @@ const store = createStore({
     }*/
   },
   actions: {
-    login({commit}){
-      commit('login')
+    login({commit}, loggedIn){
+      commit('login', loggedIn)
     },
     logout({commit}){
       localStorage.removeItem('token')
