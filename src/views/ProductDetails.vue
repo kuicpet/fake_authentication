@@ -1,4 +1,5 @@
 <template>
+    <div class="wrapper">
         <div v-if="loading" class="loader">
             <Loader />
         </div>
@@ -20,10 +21,11 @@
                     <Rating :rating="product.rating" />
                     <p>Brand : {{ product.brand }}</p>
                     <p><span>Product description</span> <br />{{ product.description }}</p>
-                    <button @click="addToCart(product)" >Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
+                    <button @click="() => addToCart(product)" >Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <script>
@@ -44,7 +46,7 @@
 
             const addToCart = (product) => {
                 store.dispatch('addToCart', product).then(() => {
-                    console.log(product)
+                    // console.log(product)
                     router.push('/cart')
                 })
             }
@@ -71,6 +73,10 @@
 </script>
 
 <style scoped>
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
 .category {
     margin: 1rem 2rem;
     width: 15rem;

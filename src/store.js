@@ -61,14 +61,14 @@ const store = createStore({
     /*getProducts(state){
       return state.products
     }*/
-    cartItems(state){
+    getCartItems(state){
       return state.cart
     },
-    cartItemsCount(state){
+    getCartItemsCount(state){
       return state.cart.length
     }, 
-    cartTotal(state){
-      return state.cart.reduce((total, item) => total + item.price, 0 )
+    getCartTotal(state){
+      return state.cart.reduce((total, item) => total + (item.price - item.price * item.discountPercentage / 100), 0 )
     }
   }
 })
