@@ -2,7 +2,10 @@
     <header class="nav">
         <RouterLink to="/">Home</RouterLink>
         <div class="links">
-            <button class="logout" v-if="isAuthenticated" @click="viewCart" >Cart</button>
+            <div class="cart">
+                <span v-if="isAuthenticated && cartTotalItems > 0">{{ cartTotalItems  }}</span>
+                <svg v-if="isAuthenticated" @click="viewCart"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            </div>
             <button class="logout" v-if="isAuthenticated" @click="handleLogout" >Logout</button>
             <RouterLink v-if="!isAuthenticated" to="/login" >Login</RouterLink>
             <RouterLink v-if="!isAuthenticated" to="/signup" >Sign up</RouterLink>
@@ -22,6 +25,7 @@
             const viewCart = () => {
                 router.push('/cart')
             }
+            const cartTotalItems = computed(() => store.getters.cartItemsCount)
             const handleLogout = () => {
                 store.dispatch('logout').then(() => {
                     router.push('/login')
@@ -35,7 +39,8 @@
             return {
                 isAuthenticated,
                 handleLogout,
-                viewCart
+                viewCart,
+                cartTotalItems 
             }
         }
     }
@@ -57,7 +62,25 @@
         align-items: center;
     }
     .cart {  
-        padding: 0.5rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cart span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+        width: 0.75rem;
+        height: 0.75rem;
+        background-color: black;
+        color: white;
+        padding: 3px;
+        border-radius: 100%;
+        font-size: 12px;
     }
     a {
         text-decoration: none;
@@ -103,6 +126,10 @@
     .logout:hover {
         background-color: red;
         border: 2px solid red;
+    }
+    svg {
+        background-color: none;
+        cursor: pointer;
     }
     @media screen and (max-width: 1024px) {
         .links {

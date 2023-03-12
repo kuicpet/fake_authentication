@@ -8,6 +8,7 @@ const store = createStore({
     //token: 'morenike',
     //user: null,
     //products: []
+    cart: []
   },
   mutations: {
     login(state, loggedIn) {
@@ -21,6 +22,12 @@ const store = createStore({
     signup(state){
       state.signedUp = true
     },
+    addToCart(state, item){
+      state.cart.push(item)
+    },
+    removeFromCart(state, index){
+      state.cart.splice(index, 1)
+    }
     /*setProducts(state, products){
       state.products = products
     }*/
@@ -36,6 +43,12 @@ const store = createStore({
     signup({commit}){
       commit('signup')
     },
+    addToCart({commit}, item){
+      commit('addToCart', item)
+    },
+    removeFromCart({commit}, index){
+      commit('removeFromCart', index)
+    }
     /*async fetchProducts({commit}){
       const endpoint = 'https://dummyjson.com/products'
       const response = await axios.get(endpoint)
@@ -44,11 +57,20 @@ const store = createStore({
       commit('setProducts', products)
     }*/
   },
-  /*getters: {
-    getProducts(state){
+  getters: {
+    /*getProducts(state){
       return state.products
+    }*/
+    cartItems(state){
+      return state.cart
+    },
+    cartItemsCount(state){
+      return state.cart.length
+    }, 
+    cartTotal(state){
+      return state.cart.reduce((total, item) => total + item.price, 0 )
     }
-  }*/
+  }
 })
 
 export default store

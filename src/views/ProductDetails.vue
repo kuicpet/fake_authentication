@@ -20,7 +20,7 @@
                     <Rating :rating="product.rating" />
                     <p>Brand : {{ product.brand }}</p>
                     <p><span>Product description</span> <br />{{ product.description }}</p>
-                    <button>Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
+                    <button @click="addToCart(product)" >Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
                 </div>
             </div>
         </div>
@@ -28,18 +28,26 @@
 
 <script>
     import {ref} from '@vue/reactivity'
-    import { useRoute } from 'vue-router';
+    import { useRoute, useRouter } from 'vue-router';
     import { onMounted } from 'vue';
     import Loader from '../components/Loader.vue';
     import Rating from '../components/Rating.vue';
+    import store from '../store';
 
     export default {
         components: {Loader, Rating},
         setup(){
             const product = ref({})
             const route = useRoute()
+            const router = useRouter()
             const loading = ref(true)
 
+            const addToCart = (product) => {
+                store.dispatch('addToCart', product).then(() => {
+                    console.log(product)
+                    router.push('/cart')
+                })
+            }
             const fetchProductDetails = () => {
                 const {productId} = route.params
                 const endpoint = `https://dummyjson.com/products/${productId}`;
@@ -55,7 +63,8 @@
             
             return {
                 product,
-                loading
+                loading,
+                addToCart
             }
         }
     }
@@ -73,8 +82,7 @@
     border-radius: 12px;
 }
     .container {
-        display: flex;
-        
+        display: flex;   
         margin: 2rem 1rem;
         height: 100%;
     }
@@ -112,8 +120,7 @@
     .normal {
         text-decoration: line-through;
     }
-    button {
-    
+    button {    
     border: 2px solid black;
     border-radius: 0.375rem;
     font-size: 1rem;
