@@ -1,9 +1,4 @@
 <template>
-    <div class="category">
-        <div>
-            <RouterLink to="/products">Go Back</RouterLink>
-        </div>
-    </div>
     <div class="container">
         <h1>Your Shopping Cart {{ cartTotalItems ? `(${cartTotalItems})` : '' }}</h1>
         <div v-if="cartTotal === 0" class="empty">
@@ -35,7 +30,11 @@
                 </tbody>
             </table>
         </div>
-        <h4 v-if="cartTotal > 0">Total : $ {{ cartTotal.toFixed(2) }}</h4>
+        <h4 v-if="cartTotal > 0">SubTotal : $ {{ cartTotal.toFixed(2) }}</h4>
+        <span v-if="cartTotal">
+           <button class="checkout">Proceed to Checkout</button> 
+           <button class="continue" @click="$event => $router.push('/products')">Continue Shopping</button> 
+        </span>
     </div>
 </template>
 
@@ -104,6 +103,10 @@ button:hover {
     transform: translateY(2px) ;
     box-shadow:0 0 0 ;
 }
+.checkout {
+    margin: 1rem 0;
+    background-color: #caff04;
+}
 .category {
     margin: 1rem 2rem;
     width: 15rem;
@@ -134,6 +137,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    margin: 1rem;
 }
 .table {
     border: 2px solid black;
@@ -192,7 +196,7 @@ h4 {
     border: 2px solid black;
     border-radius: 0.375rem;
     font-size: 1rem;
-    background-color: orange;
+    background-color: #ffa50045;
     color: black;
     width: 20%;
     padding: 0.5rem 1.25rem;
