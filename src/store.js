@@ -11,7 +11,7 @@ const store = createStore({
     /*cart: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],*/
-      cart: []
+     cart: []
   },
   mutations: {
     login(state, loggedIn) {
