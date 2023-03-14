@@ -21,7 +21,7 @@
                     <Rating :rating="product.rating" />
                     <p>Brand : {{ product.brand }}</p>
                     <p><span>Product description</span> <br />{{ product.description }}</p>
-                    <button @click="() => addToCart(product)" >Add to Cart - ${{ product.price - product.price * product.discountPercentage / 100 }} </button>
+                    <button @click="() => addToCart(product)" >Add to Cart </button>
                 </div>
             </div>
         </div>

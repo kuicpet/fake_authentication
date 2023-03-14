@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Your Shopping Cart {{ cartTotalItems ? `(${cartTotalItems})` : 'is Empty' }}</h1>
+        <h1>Cart {{ cartTotalItems ? `(${cartTotalItems})` : 'is Empty' }}</h1>
         <div v-if="cartTotal === 0" class="empty">
             <span class="cart">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -23,7 +23,7 @@
                         <td></td>
                         <td>{{ item.title }}</td>
                         <td>{{ item.price - item.price * item.discountPercentage / 100 }}</td>
-                        <td @click="removeFromCart">
+                        <td @click="removeFromCart" class="delete">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                         </td>
                     </tr>
@@ -207,6 +207,10 @@ h4 {
 }
 svg {
     cursor: pointer;
+    color: red;
+}
+svg:hover {
+    fill: red;
 }
 @media screen and (max-width: 800px) {
     h4 {
@@ -215,7 +219,7 @@ svg {
 }
  @media screen and (max-width: 400px) {
     .table {
-        width: 90%;
+        width: 100%;
     }
     p {
         width: 100%;
@@ -225,6 +229,9 @@ svg {
     }
     h4 {
         width: 50%;
+    }
+    th {
+        font-weight: bold;
     }
  }
 </style>

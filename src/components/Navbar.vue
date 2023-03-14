@@ -17,6 +17,7 @@
     import store from '../store';
     import { computed } from '@vue/reactivity';
     import { useRouter } from 'vue-router';
+    import currentUser from '../composables/current-user';
 
     export default {
         setup(){
@@ -35,7 +36,7 @@
             }
 
             const isAuthenticated = computed(() => {
-                return store.state.loggedIn
+                return currentUser()
             })
 
             return {
@@ -78,11 +79,13 @@
         left: 15px;
         width: 0.75rem;
         height: 0.75rem;
-        background-color: black;
-        color: white;
+        background-color: orange;
+        color: black;
         padding: 3px;
         border-radius: 100%;
         font-size: 12px;
+        border: 2px solid black;
+        font-weight: bold;
     }
     a {
         text-decoration: none;
