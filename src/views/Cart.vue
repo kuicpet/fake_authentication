@@ -205,13 +205,14 @@ h4 {
     outline: none;
     font-weight: bold;
 }
-svg {
+.delete svg {
     cursor: pointer;
     color: red;
 }
 svg:hover {
     fill: red;
 }
+
 @media screen and (max-width: 800px) {
     h4 {
         width: 50%;
