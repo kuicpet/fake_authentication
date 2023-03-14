@@ -55,8 +55,12 @@
             
             const removeFromCart = index => {
                 store.dispatch('removeFromCart', index)
+                // localStorage.removeItem('cartItems', index)
             }
 
+            /*const saveCartToLocalStorage = () => {
+                localStorage.setItem('cartItems', JSON.stringify(cartItems))
+            }*/
             return {
                 cartItems,
                 cartTotal,
@@ -209,7 +213,7 @@ h4 {
     cursor: pointer;
     color: red;
 }
-svg:hover {
+.delete svg:hover {
     fill: red;
 }
 

@@ -47,6 +47,7 @@
             const addToCart = (product) => {
                 store.dispatch('addToCart', product).then(() => {
                     // console.log(product)
+                    // localStorage.setItem('cartItems', JSON.stringify(product))
                     router.push('/cart')
                 })
             }
