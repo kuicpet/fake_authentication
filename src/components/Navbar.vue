@@ -107,8 +107,6 @@
         border-radius: 0.375rem;
         outline: none;
         margin: 0 1rem;
-        
-        
         transition:0.1s ease-in-out ;
     }
     a:hover {
@@ -159,7 +157,8 @@
             left: 0;
             top: 0;
             z-index: 2;
-             box-shadow: none;
+            box-shadow: none;
+            margin: 0;
          }
     }
 </style>
