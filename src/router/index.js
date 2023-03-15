@@ -3,7 +3,7 @@ import store from '../store'
 
 // views
 import Home from '../views/Home.vue'
-import NotFound from '../views/NotFound.vue'
+
 
 
 // routes
@@ -56,7 +56,7 @@ const routes = [
   {
     name: 'NotFound',
     path: '/:pathMatch(.*)*',
-    component: NotFound,
+    component: () => import('@/views/NotFound.vue'),
   },
 ]
 
