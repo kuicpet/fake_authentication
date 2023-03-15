@@ -106,7 +106,7 @@
         color: gray;
         border-radius: 0.375rem;
         outline: none;
-
+        margin: 0 1rem;
         
         
         transition:0.1s ease-in-out ;
@@ -121,7 +121,7 @@
     .router-link-active {
         color: white;
         background-color: black;
-        transform: translateY(-2px) ;
+        /*transform: translateY(-2px) ;*/
         box-shadow:0 0 0 ;
     }
 
