@@ -5,7 +5,11 @@
         <RouterLink to="/">Okay</RouterLink>
     </div>
 </template>
-
+<script>
+    export default {
+        name: 'NotFound'
+    }
+</script>
 <style scoped>
     .container {
         display: flex;
