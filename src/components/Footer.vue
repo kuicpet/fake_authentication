@@ -21,13 +21,17 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        
         margin-top: auto;
+        padding: 1rem;
     }
     small {
         margin: 0 1rem;
     }
     .heart {
         color: red;
+    }
+    a {
+        color: black;
+        text-decoration: none;
     }
 </style>

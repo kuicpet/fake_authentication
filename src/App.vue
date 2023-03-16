@@ -3,9 +3,11 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <Navbar />
-  <RouterView />
-  <Footer />
+  <div class="container">
+    <Navbar />
+    <RouterView />
+    <Footer />
+  </div>
 </template>
 
 <script>
@@ -18,5 +20,9 @@ export default {
 </script>
 
 <style scoped>
-
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 </style>

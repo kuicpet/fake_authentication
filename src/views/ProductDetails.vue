@@ -91,7 +91,7 @@
     .container {
         display: flex;   
         margin: 2rem 1rem;
-        height: 100%;
+        /*height: 100%*/;
     }
    .img_container {
     margin: 1rem;
