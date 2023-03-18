@@ -12,10 +12,6 @@
             <img src="../assets/background.jpg" alt="image" />
 
         </div>
-
-            
-                
-        
     </div>
 
     

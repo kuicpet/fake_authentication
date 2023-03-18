@@ -116,7 +116,7 @@ button:hover {
 }
 
 @media screen and (max-width: 400px) {
-    h2 {
+    h1,h2 {
         font-weight: normal;
     }
 }
