@@ -238,5 +238,8 @@ h4 {
     th {
         font-weight: bold;
     }
+    h1 {
+        font-weight: normal;
+    }
  }
 </style>
