@@ -5,7 +5,7 @@
         </div>
         <div v-else>
             <div class="category">
-               <RouterLink to="/products">Go Back</RouterLink>
+               <RouterLink to="/products">Back to Products</RouterLink>
                 <p >Category - {{ product.category }}</p>
             </div>
             <div class="container">
