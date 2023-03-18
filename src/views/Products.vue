@@ -114,4 +114,10 @@ button:hover {
     transform: translateY(2px) ;
     box-shadow:0 0 0 ;
 }
+
+@media screen and (max-width: 400px) {
+    h2 {
+        font-weight: normal;
+    }
+}
 </style>
