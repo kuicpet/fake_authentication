@@ -201,5 +201,8 @@ span {
     .img_container {
         width: 100%;
     }
+    h1 {
+        font-weight: normal;
+    }
 }
 </style>

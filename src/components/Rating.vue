@@ -32,6 +32,8 @@
 }
 .star.filled svg {
   fill: orange;
+  stroke: black;
+  stroke-width: 2px;
 }
 .star.empty svg {
   fill: none;
