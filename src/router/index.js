@@ -53,6 +53,14 @@ const routes = [
     requiresAuth: true,
   }
  },
+ {
+  name: 'Checkout',
+  path: '/checkout',
+  component: () => import('@/views/Checkout.vue'),
+  meta: {
+    requiresAuth: true,
+  }
+ },
   {
     name: 'NotFound',
     path: '/:pathMatch(.*)*',
