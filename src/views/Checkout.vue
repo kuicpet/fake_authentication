@@ -161,6 +161,7 @@ h4 span {
     padding: 0.2rem 0.5rem;
     border: 2px solid black;
     font-weight: bold;
+    border-radius: 0.35rem;
 }
 
 .table {
